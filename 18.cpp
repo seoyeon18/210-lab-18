@@ -22,6 +22,18 @@ void addTail(Node*& head, float rating, string comment) {
     newNode->rating = rating;
     newNode->comment = comment;
     newNode->next = nullptr;
+
+    if (head == nullptr) {
+        head = newNode;
+    }
+    else {
+        Node* curr = head;
+        while (curr->next != nullptr) {
+            curr = curr->next;
+        }
+        curr->next = newNode;
+    }
+
 }
 
 
@@ -52,17 +64,18 @@ int main() {
         cout << "Enter review comments: ";
         getline(cin, comment);
         if(choice == 1){
-
+            addHead(head, rating, comment);
         }
         else {
-
+            addTail(head, rating, comment);
         }
-    }
+        cout << "Enter another review? Y/N: ";
+        cin >> again;
+    }while (again == 'Y' || again == 'y');
 
-    addHead(head, 4.8, "Oscar contender");
-    addHead(head, 4.1, "Brilliant lead acting");
+    cout << "\nReviews entered:\n";
+    output(head);
 
-    cout << "You selected option " << choice << endl;
 
     return 0;
 }
