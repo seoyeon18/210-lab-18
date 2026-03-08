@@ -1,6 +1,7 @@
 // COMSC-210 | Lab 18 | Seoyeon An
 #include <iostream>
 #include <string>
+#include <limits>
 using namespace std;
 
 struct Node {
@@ -39,12 +40,32 @@ void addTail(Node*& head, float rating, string comment) {
 
 void output(Node* head) {
     Node* curr = head;
+    int reviewNum = 1;
+    float total = 0.0f;
+    int count = 0;
+
+    cout << "\nOutputting all reviews:" << endl;
     while (curr != nullptr) {
         cout << curr->rating << ": " << curr->comment << endl;
+        total += curr->rating;
+        count++;
+        reviewNum++;
         curr = curr->next;
     }
+    if (count>0) {
+        cout << (total / count);
+    }
+    else {
+        cout << "Average:0" << endl;
+    }
 }
-
+void deleteList(Node*& head) {
+    while (head != nullptr) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
 
 int main() {
     Node* head = nullptr;
@@ -73,8 +94,7 @@ int main() {
         cin >> again;
     }while (again == 'Y' || again == 'y');
 
-    cout << "\nReviews entered:\n";
-    output(head);
+    outputReviews(head);
 
 
     return 0;
