@@ -17,6 +17,14 @@ void addHead(Node*& head, float rating, string comment) {
     head = newNode;
 }
 
+void addTail(Node*& head, float rating, string comment) {
+    Node* newNode = new Node;
+    newNode->rating = rating;
+    newNode->comment = comment;
+    newNode->next = nullptr;
+}
+
+
 void output(Node* head) {
     Node* curr = head;
     while (curr != nullptr) {
@@ -35,6 +43,21 @@ int main() {
     cout << "New nodes are added at tail of linked list" << endl;
     cout << "Choice: ";
     cin >> choice;
+
+    do{
+        cout << "Enter review rating->";
+        cin >> rating;
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Enter review comments: ";
+        getline(cin, comment);
+        if(choice == 1){
+
+        }
+        else {
+
+        }
+    }
 
     addHead(head, 4.8, "Oscar contender");
     addHead(head, 4.1, "Brilliant lead acting");
