@@ -9,6 +9,23 @@ struct Node {
     Node* next;
 };
 
+void addHead(Node*& head, float rating, string comment) {
+    Node* newNode = new Node;
+    newNode->rating = rating;
+    newNode->comment = comment;
+    newNode->next = head;
+    head = newNode;
+}
+
+void output(Node* head) {
+    Node* curr = head;
+    while (curr != nullptr) {
+        cout << curr->rating << ": " << curr->comment << endl;
+        curr = curr->next;
+    }
+}
+
+
 int main() {
     Node* head = nullptr;
     int choice;
@@ -18,6 +35,9 @@ int main() {
     cout << "New nodes are added at tail of linked list" << endl;
     cout << "Choice: ";
     cin >> choice;
+
+    addHead(head, 4.8, "Oscar contender");
+    addHead(head, 4.1, "Brilliant lead acting");
 
     cout << "You selected option " << choice << endl;
 
