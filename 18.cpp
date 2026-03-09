@@ -46,7 +46,9 @@ void output(Node* head) {
 
     cout << "\nOutputting all reviews:" << endl;
     while (curr != nullptr) {
-        cout << curr->rating << ": " << curr->comment << endl;
+       cout << "> Review #" << reviewNum << ": "
+             << curr->rating << ": "
+             << curr->comment << endl;
         total += curr->rating;
         count++;
         reviewNum++;
@@ -70,6 +72,9 @@ void deleteList(Node*& head) {
 int main() {
     Node* head = nullptr;
     int choice;
+    float rating;
+    string comment;
+    char again;
 
     cout << "Which linked list method should we use?" << endl;
     cout << "New nodes are added at head of the linked list" << endl;
@@ -94,8 +99,8 @@ int main() {
         cin >> again;
     }while (again == 'Y' || again == 'y');
 
-    outputReviews(head);
-
+    output(head);
+    deleteList(head); 
 
     return 0;
 }
